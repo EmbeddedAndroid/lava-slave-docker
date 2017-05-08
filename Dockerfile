@@ -35,16 +35,13 @@ RUN \
  pip install --pre -U pyocd
 
 RUN \
- git clone -b master https://git.linaro.org/lava/lava-dispatcher.git /root/lava-dispatcher && \
+ git clone -b master https://github.com/EmbeddedAndroid/lava-dispatcher.git /root/lava-dispatcher && \
  cd /root/lava-dispatcher && \
- git checkout 2017.4 && \
+ git checkout release && \
  git config --global user.name "Docker Build" && \
  git config --global user.email "info@kernelci.org" && \
- curl https://github.com/EmbeddedAndroid/lava-dispatcher/commit/f34cacee50a8e702aa05644286e618316c1f3658.patch | git am && \
- curl https://github.com/EmbeddedAndroid/lava-dispatcher/commit/ac1bb2ab83ba243cc9b9d3dc890e38226d63872a.patch | git am && \
- curl https://github.com/EmbeddedAndroid/lava-dispatcher/commit/e3e4d946afed9d248966031c6a01a13bbffd4ccf.patch | git am && \
- curl https://github.com/EmbeddedAndroid/lava-dispatcher/commit/f5865e5b2fb30d7a4991e969577e1811183c49f2.patch | git am && \
  echo "cd \${DIR} && dpkg -i *.deb" >> /usr/share/lava-server/debian-dev-build.sh && \
+ sed -i 's,dch -v ${VERSION}-1 -D unstable "Local developer build",dch -v ${VERSION}-1 -b -D unstable "Local developer build",g' /usr/share/lava-server/debian-dev-build.sh && \
  sleep 2 && \
  /usr/share/lava-server/debian-dev-build.sh -p lava-dispatcher
 
