@@ -22,6 +22,7 @@ RUN \
  qemu-system \
  qemu-system-arm \
  qemu-system-i386 \
+ qemu-kvm \
  tftpd-hpa \
  ser2net \
  dfu-util \
