@@ -1,4 +1,4 @@
-FROM linarotechnologies/minideb:stretch-arm64
+FROM bitnami/minideb:unstable
 
 # Add services helper utilities to start and stop LAVA
 COPY scripts/stop.sh .
