@@ -24,7 +24,6 @@ RUN \
  qemu-system-i386 \
  android-tools-fastboot \
  android-tools-adb \
- android-tools-fsutils \
  tftpd-hpa \
  ser2net \
  dfu-util \
