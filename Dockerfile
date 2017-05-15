@@ -25,6 +25,7 @@ RUN \
  android-tools-fastboot \
  android-tools-adb \
  tftpd-hpa \
+ apache2 \
  ser2net \
  dfu-util \
  libusb-1.0-0-dev \
@@ -52,6 +53,13 @@ RUN \
  git clone https://github.com/Yepkit/pykush && \
  cd pykush/ && \
  python setup.py install
+
+RUN \
+ cp /usr/share/lava-dispatcher/apache2/lava-dispatcher.conf /etc/apache2/sites-available/lava-dispatcher.conf && \
+ a2enmod proxy && \
+ a2enmod proxy_http && \
+ a2dissite 000-default && \
+ a2ensite lava-dispatcher
 
 RUN mkdir -p /etc/lava-coordinator
 

@@ -6,5 +6,5 @@ if [[ -n "$LAVA_MASTER" ]]; then
 fi
 service ser2net start
 service tftpd-hpa start
+service apache2 start
 service lava-slave start
-
