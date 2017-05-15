@@ -53,6 +53,10 @@ RUN \
  cd pykush/ && \
  python setup.py install
 
+RUN mkdir -p /etc/lava-coordinator
+
+COPY configs/lava-coordinator.conf /etc/lava-coordinator/lava-coordinator.conf
+
 COPY configs/lava-slave /etc/lava-dispatcher/lava-slave
 
 COPY configs/tftpd-hpa /etc/default/tftpd-hpa
