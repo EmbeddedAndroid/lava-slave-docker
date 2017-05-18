@@ -23,6 +23,7 @@ RUN \
  qemu-system-arm \
  qemu-system-i386 \
  qemu-kvm \
+ e2fsprogs \
  android-tools-fastboot \
  android-tools-adb \
  android-tools-fsutils \
