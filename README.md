@@ -12,7 +12,7 @@ sudo docker build -t lava-slave .
 To run the image from a host terminal / command line execute the following:
 
 ```
-sudo docker run -it -v /dev:/dev -p 69:69/udp -p 80:80 -h <HOSTNAME> --privileged kernelci/lava-slave-docker:latest
+sudo docker run -it -v /boot:/boot -v /lib/modules:/lib/modules -v /dev:/dev -p 69:69/udp -p 80:80 -h <HOSTNAME> --privileged kernelci/lava-slave-docker:latest
 ```
 Where HOSTNAME is the hostname used during the container build process (check the docker build log), as that is the name used for the worker configuration. You can use `lava-docker` as the pre-built container hostname.
 
@@ -30,4 +30,10 @@ In order for TFTP requests to find their way back to the running container, you 
 
 ```
 echo "dispatcher_ip: <dispatcher host ip" > /etc/lava-server/dispatcher.d/<lava-slave-hostname>.yaml
+```
+
+To use libguestfs for image overlays, access to the host kernel and modules must be provided. Typically this means that under /boot there exists a kernel with the naming convention below.
+
+```
+/boot/
 ```
