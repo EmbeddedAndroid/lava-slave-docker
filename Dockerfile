@@ -22,6 +22,7 @@ RUN \
  qemu-system \
  qemu-system-arm \
  qemu-system-i386 \
+ e2fsprogs \
  android-tools-fastboot \
  android-tools-adb \
  tftpd-hpa \
