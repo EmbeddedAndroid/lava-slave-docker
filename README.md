@@ -32,3 +32,10 @@ In order for TFTP requests to find their way back to the running container, you 
 
 ```
 echo "dispatcher_ip: <dispatcher host ip" > /etc/lava-server/dispatcher.d/<lava-slave-hostname>.yaml
+```
+
+To use libguestfs for image overlays, access to the host kernel and modules must be provided. Typically this means that under /boot there exists a kernel with the naming convention below.
+
+```
+/boot/vmlinuz-<version>
+```
