@@ -1,4 +1,4 @@
-FROM linarotechnologies/minideb:stretch-arm64
+FROM opensourcefoundries/minideb:stretch
 
 # Add services helper utilities to start and stop LAVA
 COPY scripts/stop.sh .
@@ -46,6 +46,7 @@ RUN \
  git config --global user.email "info@kernelci.org" && \
  echo "cd \${DIR} && dpkg -i *.deb" >> /usr/share/lava-server/debian-dev-build.sh && \
  sed -i 's,dch -v ${VERSION}-1 -D unstable "Local developer build",dch -v ${VERSION}-1 -b -D unstable "Local developer build",g' /usr/share/lava-server/debian-dev-build.sh && \
+ sed -i 's,git clone https://github.com/Linaro/pkg-${NAME}.git,git clone https://github.com/EmbeddedAndroid/pkg-${NAME}.git,g' /usr/share/lava-server/debian-dev-build.sh && \
  sleep 2 && \
  /usr/share/lava-server/debian-dev-build.sh -p lava-dispatcher
 
